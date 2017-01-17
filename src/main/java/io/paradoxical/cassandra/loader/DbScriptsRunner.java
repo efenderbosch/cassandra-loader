@@ -43,7 +43,8 @@ public class DbScriptsRunner {
         if (dbRunnerConfig.getCreateKeyspace() != null && dbRunnerConfig.getCreateKeyspace()) {
             try {
                 rootSession.execute("CREATE KEYSPACE " + dbRunnerConfig.getKeyspace() + "\n" +
-                                    "WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };");
+                                    "WITH REPLICATION = { 'class' : '" + dbRunnerConfig.getReplicationStrategy() +
+                                    "', 'replication_factor' : " + dbRunnerConfig.getReplicationFactor() +") };");
             } catch (AlreadyExistsException ex) {
                 logger.warn("Keyspace already exists!");
             }
