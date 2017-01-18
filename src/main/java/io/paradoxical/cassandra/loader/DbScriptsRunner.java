@@ -42,9 +42,8 @@ public class DbScriptsRunner {
 
         if (dbRunnerConfig.getCreateKeyspace() != null && dbRunnerConfig.getCreateKeyspace()) {
             try {
-                rootSession.execute("CREATE KEYSPACE " + dbRunnerConfig.getKeyspace() + "\n" +
-                                    "WITH REPLICATION = { 'class' : '" + dbRunnerConfig.getReplicationStrategy() +
-                                    "', 'replication_factor' : " + dbRunnerConfig.getReplicationFactor() +") };");
+                rootSession.execute("CREATE KEYSPACE IF NOT EXISTS " + dbRunnerConfig.getKeyspace() + "\n" +
+                                    "WITH REPLICATION = " + dbRunnerConfig.getReplicationMap() +";");
             } catch (AlreadyExistsException ex) {
                 logger.warn("Keyspace already exists!");
             }

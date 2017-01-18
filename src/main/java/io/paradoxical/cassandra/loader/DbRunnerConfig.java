@@ -25,9 +25,7 @@ public class DbRunnerConfig {
 
     private Boolean createKeyspace = false;
 
-    private String replicationStrategy;
-
-    private Integer replicationFactor;
+    private String replicationMap;
 
     public String getFilePath() {
         if(!filePath.endsWith("/")) {
