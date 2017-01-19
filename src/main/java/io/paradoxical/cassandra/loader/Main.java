@@ -91,6 +91,7 @@ public class Main {
         options.addOption(Option.builder("rm")
                                 .longOpt("replicationMap")
                                 .required(false)
+                                .hasArg(true)
                                 .desc("Replication map for use w/ createKeyspace (default = " + DEFAULT_REPLICATION_MAP + ")")
                                 .build());
 
